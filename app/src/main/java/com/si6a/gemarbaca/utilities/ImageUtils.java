@@ -2,21 +2,15 @@ package com.si6a.gemarbaca.utilities;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.widget.ImageView;
-
-import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 public class ImageUtils {
     public static String convertImageToBase64(Context context, Uri uri) {
@@ -33,8 +27,7 @@ public class ImageUtils {
 //                byteArrayOutputStream.write(buffer, 0, bytesRead);
 //            }
 //            byte[] byteArray = byteArrayOutputStream.toByteArray();
-//            String base64Image = Base64.encodeToString(byteArray, Base64.URL_SAFE | Base64.CRLF);
-//
+//            String base64Image = Base64.encodeToString(byteArray, Base64.URL_SAFE);
 //            // Close InputStream
 //            inputStream.close();
 //

@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.rvGemarbaca.setLayoutManager(new LinearLayoutManager(this));
-        binding.tvEmpty.setVisibility(View.VISIBLE);
         fetchData();
 
         binding.fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
+        binding.progressBar.setVisibility(View.VISIBLE);
         RetrofitClient.getInstance().fetchAllGemarBaca().enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -91,11 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.d("Gemar_Baca", "onResponse : " + response.code());
                 Log.d("Gemar_Baca", "onResponse : " + response.body().getMessage());
+                binding.progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<ResponseData> call, Throwable t) {
                 Log.d("Gemar_Baca", "onFailure : " + t.getMessage());
+                binding.progressBar.setVisibility(View.GONE);
             }
         });
     }
